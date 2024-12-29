@@ -1,18 +1,21 @@
-import 'package:deal_zone/config/routes.dart';
-import 'package:deal_zone/core/components/custom_text_form_field.dart';
-import 'package:deal_zone/core/components/primary_button.dart';
-import 'package:deal_zone/core/components/validators.dart';
-import 'package:deal_zone/core/utils/app_styles.dart';
-import 'package:deal_zone/core/utils/colors.dart';
-import 'package:deal_zone/core/utils/images.dart';
-import 'package:deal_zone/core/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+import '../../../../config/routes.dart';
+import '../../../../core/components/custom_text_form_field.dart';
+import '../../../../core/components/primary_button.dart';
+import '../../../../core/components/validators.dart';
+import '../../../../core/utils/app_styles.dart';
+import '../../../../core/utils/colors.dart';
+import '../../../../core/utils/images.dart';
+import '../../../../core/utils/strings.dart';
 
+class RegisterScreen extends StatelessWidget {
+  RegisterScreen({super.key});
+
+  TextEditingController nameController = TextEditingController();
+  TextEditingController reTypePassController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -21,12 +24,28 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 104.h),
+          padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 60.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Image(image: AssetImage(AppImages.logo)),
-
+              Text(
+                AppStrings.yourNextBigDealIsHere,
+                style: AppTextStyles.topHeading,
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              CustomTextFormField(
+                hint: AppStrings.name,
+                validator: (val) => AppValidators.validateUsername(val),
+                controller: nameController,
+                enabledBorderColor: AppColors.lightGray,
+                borderRadius: BorderRadius.circular(7.sp),
+                errorBorderColor: AppColors.red,
+                focusedBorderColor: AppColors.lightGray,
+              ),
               CustomTextFormField(
                 hint: AppStrings.yourMobilePhone,
                 validator: (val) => AppValidators.validatePhoneNumber(val),
@@ -36,19 +55,24 @@ class LoginScreen extends StatelessWidget {
                 errorBorderColor: AppColors.red,
                 focusedBorderColor: AppColors.lightGray,
               ),
-
               CustomTextFormField(
                 isSecured: true,
                 hint: AppStrings.password,
                 validator: (val) => AppValidators.validatePhoneNumber(val),
                 controller: passwordController,
               ),
-
-              PrimaryButton(label: Text(AppStrings.signIn)),
-
-              TextButton(
-                  onPressed: () {}, child: Text(AppStrings.forgotPassword)),
-
+              CustomTextFormField(
+                isSecured: true,
+                hint: AppStrings.reTypePassword,
+                validator: (val) => AppValidators.validateConfirmPassword(
+                    val, passwordController.text),
+                controller: phoneController,
+                enabledBorderColor: AppColors.lightGray,
+                borderRadius: BorderRadius.circular(7.sp),
+                errorBorderColor: AppColors.red,
+                focusedBorderColor: AppColors.lightGray,
+              ),
+              PrimaryButton(label: Text(AppStrings.getStarted)),
               PrimaryButton(
                 label: Row(
                   children: [
@@ -62,7 +86,6 @@ class LoginScreen extends StatelessWidget {
                 ),
                 backgroundColor: WidgetStatePropertyAll(AppColors.blue),
               ),
-
               PrimaryButton(
                 label: Row(
                   children: [
@@ -82,24 +105,21 @@ class LoginScreen extends StatelessWidget {
                 ),
                 backgroundColor: WidgetStatePropertyAll(AppColors.blue),
               ),
-
               Text(
                 AppStrings.or,
                 textAlign: TextAlign.center,
                 style:
                     AppTextStyles.subheading.copyWith(color: AppColors.black),
               ),
-
               SizedBox(
-                height: 20,
+                height: 10.h,
               ),
-
               TextButton(
                   onPressed: () {
                     context.go(AppRoutes.registerScreen);
                   },
                   child: Text(
-                    AppStrings.signUp,
+                    AppStrings.signIn,
                     style: AppTextStyles.subheading
                         .copyWith(color: AppColors.primaryColor),
                   ))
