@@ -26,28 +26,24 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.only(top: 400.sp, bottom: 30.sp),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  AppImages.logoWithName,
-                  width: 185.w,
-                  height: 61.h,
-                  fit: BoxFit.fill,
-                ),
-              ],
+      backgroundColor: Colors.white,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Center(
+              child: Image.asset(
+                AppImages.logo,
+              ),
             ),
-            Spacer(),
-            CircularProgressIndicator(
+          ),
+          Padding(
+            padding:  EdgeInsets.only(bottom: 20.0.sp), // Adjust padding
+            child: CircularProgressIndicator(
               color: AppColors.primaryColor,
-            )
-          ],
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }

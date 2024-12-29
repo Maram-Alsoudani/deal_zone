@@ -12,9 +12,10 @@ class AppTextStyles {
   );
 
   static TextStyle subheading = TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.w600,
-    color: AppColors.darkGray,
+    fontSize: 21,
+    fontWeight: FontWeight.bold,
+    color: AppColors.white,
+    fontFamily: 'MavenPro'
   );
 
   static TextStyle bodyText = TextStyle(
@@ -24,9 +25,10 @@ class AppTextStyles {
   );
 
   static TextStyle lightBodyText = TextStyle(
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: FontWeight.normal,
-    color: AppColors.black,
+    color: AppColors.medGray,
+    fontFamily: 'Inter',
   );
 
   static TextStyle buttonText = TextStyle(
@@ -37,19 +39,4 @@ class AppTextStyles {
 }
 
 
-// Button Styles
-class ButtonStyles {
-  static final ButtonStyle primaryButton = ElevatedButton.styleFrom(
-    foregroundColor: Colors.white, backgroundColor: AppColors.primaryColor,
-    textStyle: AppTextStyles.buttonText,
-    padding: EdgeInsets.symmetric(vertical: 14, horizontal: 24),
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-  );
 
-  static final ButtonStyle secondaryButton = ElevatedButton.styleFrom(
-    foregroundColor: Colors.white, backgroundColor: AppColors.primaryColor,
-    textStyle: AppTextStyles.buttonText,
-    padding: EdgeInsets.symmetric(vertical: 14, horizontal: 24),
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-  );
-}
